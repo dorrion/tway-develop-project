@@ -11,3 +11,97 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* 나눔스퀘어 폰트 추가 */
+@font-face {
+  font-family: "NanumSquareLight";
+  src: url(./fonts/NanumSquareL.eot);
+  src: url(./fonts/NanumSquareL.eot?#iefix) format('embedded-opentype'),
+  url(./fonts/NanumSquareL.woff) format('woff'),
+  url(./fonts/NanumSquareL.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "NanumSquare";
+  src: url(./fonts/NanumSquareR.eot);
+  src: url(./fonts/NanumSquareR.eot?#iefix) format('embedded-opentype'),
+  url(./fonts/NanumSquareR.woff2) format('woff2'),
+  url(./fonts/NanumSquareR.woff) format('woff'),
+  url(./fonts/NanumSquareR.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "NanumSquareBold";
+  src: url(./fonts/NanumSquareB.eot);
+  src: url(./fonts/NanumSquareB.eot?#iefix) format('embedded-opentype'),
+  url(./fonts/NanumSquareB.woff2) format('woff2'),
+  url(./fonts//NanumSquareB.woff) format('woff'),
+  url(./fonts/NanumSquareB.ttf) format('truetype');
+}
+
+/* 
+  * 나눔스퀘어 폰트 적용법 *
+
+  css파일 또는 styled-components에
+
+  font-family: "NanumSquareLight";    (얇은 굵기)
+  font-family: "NanumSquare";         (보통 굵기)
+  font-family: "NanumSquareBold";     (두꺼운 굵기)
+
+  입력하시면 됩니다!
+
+*/
+
+
+
+
+
+/* 나눔고딕 폰트 추가 */
+
+@font-face {
+  font-family: 'Nanum Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/NanumGothic-Regular.eot');
+  src: url('./fonts/NanumGothic-Regular.eot?#iefix') format('embedded-opentype'),
+      url('./fonts/NanumGothic-Regular.woff2') format('woff2'),
+      url('./fonts/NanumGothic-Regular.woff') format('woff'),
+      url('./fonts/NanumGothic-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nanum Gothic';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./fonts/NanumGothic-Bold.eot');
+  src: url('./fonts/NanumGothic-Bold.eot?#iefix') format('embedded-opentype'),
+      url('./fonts/NanumGothic-Bold.woff2') format('woff2'),
+      url('./fonts/NanumGothic-Bold.woff') format('woff'),
+      url('./fonts/NanumGothic-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nanum Gothic';
+  font-style: normal;
+  font-weight: 800;
+  src: url('./fonts/NanumGothic-ExtraBold.eot');
+  src: url('./fonts/NanumGothic-ExtraBold.eot?#iefix') format('embedded-opentype'),
+      url('./fonts/NanumGothic-ExtraBold.woff2') format('woff2'),
+      url('./fonts/NanumGothic-ExtraBold.woff') format('woff'),
+      url('./fonts/NanumGothic-ExtraBold.ttf') format('truetype');
+}
+
+/* 
+  * 나눔고딕 폰트 적용법 *
+
+  css파일 또는 styled-components에
+
+  font-family: "NanumGothic";   
+
+  font-weight: 400;    (얇은 굵기)
+  font-weight: 700;    (보통 굵기)
+  font-weight: 800;    (두꺼운 굵기)
+
+  입력하시면 됩니다!
+
+*/

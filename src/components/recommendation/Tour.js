@@ -1,0 +1,7 @@
+export const Tour = () =>{
+    return (
+        <>
+        </>
+    );
+}
+

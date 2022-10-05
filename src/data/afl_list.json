@@ -1,0 +1,95 @@
+{
+  "afl": [
+    { "id": 1,
+     "name": "호텔",
+      "content": "icon/ico_main_aff01.png" },
+    {
+      "id": 2,
+      "name": "렌터카",
+      "content": "icon/ico_main_aff02.png"
+    },
+    {
+      "id": 3,
+      "name": "쇼핑 편의",
+      "content": "icon/ico_main_aff03.png"
+    },
+    {
+      "id": 4,
+      "name": "액티비티",
+      "content": "icon/ico_main_aff04.png"
+    },
+    {
+      "id": 5,
+      "name": "금융 여행자보험",
+      "content": "icon/ico_main_aff05.png"
+    },
+    {
+      "id": 6,
+      "name": "와이파이",
+      "content": "icon/ico_main_aff06.png"
+    }
+  ],
+
+  "carousel": [
+    {
+      "id": 1,
+      "title": "여행 액티비티",
+      "desc": "심카드부터 교통패스, 테마파크, 공연, 맛집 할인까지!",
+      "img": "images/490a6cb5-e383-407f-b4b8-92f313ec2550.jpg"
+    }, 
+    {
+      "id": 2,
+      "title": "SK 렌터카",
+      "desc": "제주지역 차량 보유대수 1위!",
+      "img": "images/ae4f9b7e-cedf-41d2-a8e0-c5abf3af2879.jpg"
+    }, 
+    {
+      "id": 3,
+      "title": "제주렌터카",
+      "desc": "가장 가까운 렌터카(도보 3분 / 셔틀 1분)",
+      "img": "images/0b148334-37fe-4c0b-a530-d2b7c8ef8ef1.jpg"
+    }, 
+    {
+      "id": 4,
+      "title": "제주패스렌트카",
+      "desc": "TWAY10/TWAY5 정상가/할인가 입력 즉시 할인!",
+      "img": "images/02fc451a-c1b5-4668-bba9-c0454cefab66.png"
+    },
+    {
+      "id": 5,
+      "title": "렌터카",
+      "desc": "160개국 900개 업체를 한눈에! 최저가 보장으로 예약하자!",
+      "img": "images/c9137c17-1d93-4876-aecb-e934fff7946d.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Booking.com",
+      "desc": "티웨이 모든 취항지의 숙소 예약 최저가로 진행하세요!",
+      "img": "images/dccefb88-a329-4fd8-9c60-b8eab5864066.jpg"
+    },
+    {
+      "id": 7,
+      "title": "제주신화월드",
+      "desc": "티웨이항공 회원 특별 혜택 클릭 후 확인해 보세요",
+      "img": "images/44ddd0da-9497-411d-b6f5-8c91ad27589c.png"
+    },
+    {
+      "id": 8,
+      "title": "호텔",
+      "desc": "호텔 가격 한번에 검색하고 최저가보장으로 예약하세요!",
+      "img": "images/94420b21-699d-44a5-a632-9f8a3fb2035d.jpg"
+    },
+    {
+      "id": 9,
+      "title": "와이파이 도시락",
+      "desc": "해외여행 필수품 챙기기 와이파이 도시락 15% 할인!",
+      "img": "images/42f715bc-b09d-4ab3-9896-492929f3c726.jpg"
+    },
+    {
+      "id": 10,
+      "title": "밥상살림",
+      "desc": "지구를 지키는 작은 실천 제주 친환경 상품을 만나보세요!",
+      "img": "images/e625021f-650a-4d7f-bc9f-03cd9eb975a1.png"
+    }
+  ]
+}
