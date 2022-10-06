@@ -23,11 +23,9 @@
 - 기간 : 2022-10-05 ~ 2022-10-18(2주)
   </br>
 
-
 ## 📢 Website
 
 - Link : (배포 페이지)
-
 
 </br>
 
@@ -37,11 +35,18 @@
 
 
 </br>
-## 🛠 Setting
-- npm install eslint-plugin-node --save-dev (충돌 방지) / vsCode 내에서 preitter 와 Eslint 확장프로그램이 깔려 있어야 합니다. preitter에서 혹시 오류가 나온다면 
-- 절대경로 설정이 가능합니다.
-- /* eslint-disable */를 파일 최상단에 적어둔다면 eslint의 사용을 잠시 끌 수 있습니다. 오류가 뜨는 파일에는 모두 적어두었으나 마지막 완성 PR때는 되도록 삭제 부탁드립니다. 콘솔 로그를 찍는 등 코드를 작성하실 때는 최상단에 적어두셔서 잠시 꺼두시는 것이 편합니다.
-- .prettierrc.json 파일이 UTF-16로 읽어지고 있다면, (vscode 우측 하단에서 설정 가능) prettier의 오류가 있을 수 있습니다
-- 
 
+## 🛠 Setting
+
+- npm install eslint-plugin-node --save-dev (충돌 방지) / vsCode 내에서 preitter 와 Eslint 확장프로그램이 깔려 있어야 합니다
+- preitter에서 혹시 오류가 나온다면 추가로 설치해주세요
+
+- 절대경로 설정이 가능합니다.
+
+- /_ eslint-disable _/를 파일 최상단에 적어둔다면 eslint의 사용을 잠시 끌 수 있습니다. 오류가 뜨는 파일에는 모두 적어두었으나 마지막 완성 PR때는 되도록 삭제 부탁드립니다.
+- 콘솔 로그를 찍는 등 코드를 작성하실 때는 최상단에 적어두셔서 잠시 꺼두시는 것이 편합니다.
+
+- .prettierrc.json 파일이 UTF-16로 읽어지고 있다면, (vscode 우측 하단에서 설정 가능) prettier의 오류가 있을 수 있습니다
+
+</br>
 
