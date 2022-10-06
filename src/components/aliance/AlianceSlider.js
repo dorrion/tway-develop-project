@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
-import data from "data/afl_list.json";
+/* eslint-disable */
+import React, {useState, useEffect, useRef} from 'react';
+import styled from 'styled-components';
+import data from 'data/afl_list.json';
 
-export default function Slide({ title, desc, img }) {
+export default function Slide({title, desc, img}) {
   return (
     <Container>
       <IMG src={img} />
@@ -10,9 +11,8 @@ export default function Slide({ title, desc, img }) {
         <Title>{title}</Title>
         <Description>{desc}</Description>
       </Content>
-
     </Container>
-  )
+  );
 }
 
 const Container = styled.a`
@@ -29,7 +29,7 @@ const Content = styled.div`
   padding: 17px 10px 15px 15px;
   width: 380px;
   height: 106px;
-`
+`;
 
 const Title = styled.strong`
   font-size: 18px;
@@ -40,5 +40,3 @@ const Description = styled.div`
   height: 40px;
   font-size: 18px;
 `;
-
-

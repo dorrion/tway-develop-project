@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import data from "data/afl_list.json";
+/* eslint-disable */
+import React from 'react';
+import styled from 'styled-components';
+import data from 'data/afl_list.json';
 
 const IconWrapper = styled.a`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 
   grid-template-columns: repeat(6, 1fr);
   color: #313131;
