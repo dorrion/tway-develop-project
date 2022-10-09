@@ -244,6 +244,27 @@ const PointSelector = styled.div`
   } */
 `;
 
+const Inquiry = styled.div`
+  width: 100px;
+  height: 60px;
+  padding: 0;
+  margin-top: 25px;
+  margin-left: 10px;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #7d756d;
+  border: 1px solid #7d756d;
+  /* margin: ; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > div {
+    font-size: 20px;
+  }
+`;
+
 //출발지 고르기
 const StartPoint = () => {
   return (
@@ -256,6 +277,17 @@ const StartPoint = () => {
         <input type="text" placeholder="도착지"></input>
         {/* <img src={process.env.PUBLIC_URL + 'icon/ico_btn_pin.png'}></img> */}
       </PointSelector>
+      <PointSelector>
+        <input type="text" placeholder="YYYY-MM-DD"></input>
+        {/* <img src={process.env.PUBLIC_URL + 'icon/ico_btn_pin.png'}></img> */}
+      </PointSelector>
+      <PointSelector>
+        <input type="text" placeholder="성인1 소아1 유아1"></input>
+        {/* <img src={process.env.PUBLIC_URL + 'icon/ico_btn_pin.png'}></img> */}
+      </PointSelector>
+      <Inquiry>
+        <div>조회</div>
+      </Inquiry>
     </Pointers>
   );
 };
@@ -274,11 +306,6 @@ function FlightBookZone() {
         </BookOption>
         <BookSchedule>
           <StartPoint></StartPoint>
-          <div className="start__point"></div>
-          <div className="finish__point"></div>
-          <div className="schedule"></div>
-          <div className="passenger__number"></div>
-          <div className="inquiry__button"></div>
         </BookSchedule>
       </BookZoneBody>
     </BookZone>
