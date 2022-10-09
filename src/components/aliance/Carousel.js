@@ -3,11 +3,13 @@ import styled from "styled-components";
 import AlianceSlider from "./AlianceSlider";
 import data from "data/afl_list.json";
 
-const TOTAL_SLIDES = 4; // 전체 슬라이드 개수(총3개. 배열로 계산)
+const TOTAL_SLIDES = 4; // 전체 슬라이드 개수(총3개. 배열로 계산)
 
 export default function Slider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef(null);
+  const IMG_WIDTH = 395;
+  const slideRange = currentSlide *IMG_WIDTH;
 
   // Next 버튼 클릭 시
   const NextSlide = () => {
@@ -30,8 +32,8 @@ export default function Slider() {
   };
 
   useEffect(() => {
-    slideRef.current.style.transition = "all 0.5s ease-in-out";
-    slideRef.current.style.transform = `translateX(-${currentSlide}00%)`; // 백틱을 사용하여 슬라이드로 이동하는 에니메이션을 만듭니다.
+    slideRef.current.style.transition = "all 0.35s ease-in";
+    slideRef.current.style.transform = `translateX(-${slideRange}px)`; // 백틱을 사용하여 슬라이드로 이동하는 에니메이션을 만듭니다.
   }, [currentSlide]);
 
   return (
