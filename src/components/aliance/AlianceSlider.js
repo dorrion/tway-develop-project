@@ -1,11 +1,11 @@
 /* eslint-disable */
 import React, {useState, useEffect, useRef} from 'react';
 import styled from 'styled-components';
-import data from 'data/afl_list.json';
 
 export default function Slide({title, desc, img}) {
   return (
     <Container>
+
       <IMG src={img} />
       <Content>
         <Title>{title}</Title>
@@ -16,17 +16,24 @@ export default function Slide({title, desc, img}) {
 }
 
 const Container = styled.a`
+  /* 가상 요소 써보기 */
   display: flex;
   flex-direction: column;
+
+  margin-right: 20px;
+  position: relative;
+
 `;
 
 const IMG = styled.img`
+  max-width: 100%;
   width: 380px;
   height: 138px;
 `;
 
 const Content = styled.div`
-  padding: 17px 10px 15px 15px;
+  padding-top: 17px;
+
   width: 380px;
   height: 106px;
 `;
@@ -37,6 +44,7 @@ const Title = styled.strong`
 `;
 
 const Description = styled.div`
+  padding-top: 8px;
   height: 40px;
-  font-size: 18px;
+  font-size: 14px;
 `;
