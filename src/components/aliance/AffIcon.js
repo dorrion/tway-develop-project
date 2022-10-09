@@ -20,12 +20,13 @@ const Wrapper = styled.div`
 
 const TopWrapper = styled.div`
   display: flex;
-  width: calc(100%-50px);
+  width: 1200px;
   height: 210px;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 32px;
+  margin: 0 auto;
 `;
 
 const BottomWrapper = styled.div`
@@ -33,6 +34,8 @@ const BottomWrapper = styled.div`
   flex-direction: row;
   width: 1200px;
   height: 368px;
+
+  margin: 0 auto;
 `;
 
 export default function AfflIcon() {
