@@ -8,7 +8,7 @@ const TOTAL_SLIDES = 4; // 전체 슬라이드 개수(총3개. 배열로 계산)
 export default function Slider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef(null);
-  const IMG_WIDTH = 395;
+  const IMG_WIDTH = 404;
   const slideRange = currentSlide *IMG_WIDTH;
 
   // Next 버튼 클릭 시
