@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import {useState, useRef, useEffect} from 'react';
 import {AdContent} from './AdContent';
+import ModalContent from './ModalContent';
 import {dummyData} from '../../data/Event_dummyData';
 import {createGlobalStyle} from 'styled-components';
 
@@ -19,6 +20,48 @@ export const GlobalStyle = createGlobalStyle`
     padding : 0;
 `;
 
+export const Modal = styled.div`
+  display : ${(props) => props.props === true ? 'flex' : 'none'};
+  /* opacity : ${(props) => props.props === true ? 100 : 0}; */
+  position : absolute;
+  width : 80%;
+  height : 600px;
+  overflow : auto;
+
+  transition : .5s ease;
+
+  left :10%;
+
+
+  background-color : rgba(255,255,255);
+
+  box-shadow : 5px 5px 15px #afafaf;
+  z-index : 10;
+
+  > button {
+    position : absolute;
+    right : 10px;
+    top : 10px;
+
+    width : 30px;
+    height : 30px;
+
+    background-color : #ff8585;
+    border : none;
+    color : white;
+
+    cursor: pointer;
+
+    &:hover {
+    background-color : #ff4343;
+
+    }
+  }
+
+  
+`
+
+
 export const EventArea = styled.div`
   width: 100vw;
   height: 582px;
@@ -29,7 +72,7 @@ export const EventArea = styled.div`
   align-items: center;
 
   background-color: #ffffff;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
 `;
 
 export const Header = styled.div`
@@ -196,6 +239,8 @@ export const Event = () => {
   const [mode, setMode] = useState('play');
   const [focus, setFocus] = useState(1);
 
+  const [display, setDisplay] = useState(false);
+
   const slideRef = useRef();
 
   const handleClick = (direction) => {
@@ -234,7 +279,7 @@ export const Event = () => {
   };
 
   const handleCarouselBtn = (key) => {
-    console.log(key);
+    // console.log(key);
     if (key !== data.length) {
       slideRef.current.style.transform = `translateX(${-(key - 1) * 525}px)`;
       setStartX(-(key - 1) * 525);
@@ -248,12 +293,21 @@ export const Event = () => {
     mode === 'play' ? setMode('pause') : setMode('play');
   };
 
+  const handlePlusClick = () => {
+    setDisplay(true);
+    // console.log(display)
+  }
+
+  const handleXClick = () => {
+    setDisplay(false);
+  }
+
   let timer;
 
   useEffect(() => {
     if (mode === 'play') {
       timer = setTimeout(() => {
-        console.log('그만해');
+        // console.log('그만해');
         if (startX !== -(data.length - 2) * 525) {
           slideRef.current.style.transform = `translateX(${startX - 525}px)`;
           setStartX(startX - 525);
@@ -268,36 +322,42 @@ export const Event = () => {
   }, [mode, startX]);
 
   return (
-    <EventArea>
-      <Header>
-        <span className="title">이벤트</span>
-        <img src={plusBtn} alt="plusBtn" className="plusBtn"></img>
-      </Header>
-      <Carousel>
-        <div className="slide">
-          <img src={leftBtn} alt="leftBtn" className="leftBtn" onClick={() => handleClick('left')}></img>
-          <div className="display">
-            <div className="slider" ref={slideRef}>
-              <AdContent content={data} />
+    <>
+      <Modal props = {display}>
+        <button onClick={handleXClick}>X</button>
+        <ModalContent/>
+      </Modal>
+      <EventArea>
+        <Header>
+          <span className="title">이벤트</span>
+          <img src={plusBtn} alt="plusBtn" className="plusBtn" onClick={handlePlusClick}></img>
+        </Header>
+        <Carousel>
+          <div className="slide">
+            <img src={leftBtn} alt="leftBtn" className="leftBtn" onClick={() => handleClick('left')}></img>
+            <div className="display">
+              <div className="slider" ref={slideRef}>
+                <AdContent content={data} />
+              </div>
             </div>
+            <img src={rightBtn} alt="rightBtn" className="rightBtn" onClick={() => handleClick('right')}></img>
           </div>
-          <img src={rightBtn} alt="rightBtn" className="rightBtn" onClick={() => handleClick('right')}></img>
-        </div>
-        <div className="carousel-btn">
-          {data.map((el) => {
-            if (el.id !== data.length) {
-              return (
-                <div
-                  className={focus === el.id ? 'activeBtn' : 'btn'}
-                  key={el.id}
-                  onClick={() => handleCarouselBtn(el.id)}
-                ></div>
-              );
-            }
-          })}
-          {mode === 'play' ? <img src={pause} onClick={handleMode}></img> : <img src={play} onClick={handleMode}></img>}
-        </div>
-      </Carousel>
-    </EventArea>
+          <div className="carousel-btn">
+            {data.map((el) => {
+              if (el.id !== data.length) {
+                return (
+                  <div
+                    className={focus === el.id ? 'activeBtn' : 'btn'}
+                    key={el.id}
+                    onClick={() => handleCarouselBtn(el.id)}
+                  ></div>
+                );
+              }
+            })}
+            {mode === 'play' ? <img src={pause} onClick={handleMode}></img> : <img src={play} onClick={handleMode}></img>}
+          </div>
+        </Carousel>
+      </EventArea>
+    </>
   );
 };
