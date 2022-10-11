@@ -13,6 +13,12 @@ const IconWrapper = styled.a`
   color: #313131;
   text-decoration: none;
   cursor: pointer;
+
+  margin-left: 100px;
+ 
+ &:first-child {
+  margin-left: 0;
+ }
 `;
 
 const StyledCircle = styled.div`
@@ -28,6 +34,9 @@ const StyledCircle = styled.div`
   background-color: ${(props) => props.theme.white};
 
   cursor: pointer;
+
+  
+  
   :hover {
     background: ${(props) => props.theme.red};
   }
@@ -37,6 +46,7 @@ const StyledCircle = styled.div`
 const Icon = styled.img`
   width: 72px;
   height: 72px;
+
 `;
 
 function Button() {
