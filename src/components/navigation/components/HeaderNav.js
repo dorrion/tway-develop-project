@@ -1,159 +1,201 @@
 /* eslint-disable */
+//브랜치생성
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 import HeaderToggle from './HeaderToggle';
-import ToggleMenu from './ToggleMenu';
 import menuList from '../../../data/menuList.json';
+import {NavSide} from './NavSide'
+// import MenuModal from './MenuModal'
 
 // import {ReactComponent as TopLogin} from '../../../data/ico_top_login.svg'
 // import {ReactComponent as TopLogin} from '/icon/ico_top_login.svg'
 
 // import ico_top_login from "/img/"
 
-const HeaderInner = styled.div`
-  /* display: flex;
+const HeaderBox = styled.div`
+  
+  .fixedBox {
     width: 100%;
-    background-color: rgba(0,0,0,0);
-    align-items: center;
-    flex-direction: column; */
+    height: 80px;
+    position: fixed;
+    z-index: 101;
 
-  > .container {
-    /* width: 1200px; */
     display: flex;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0);
     align-items: center;
-    flex-direction: column;
-    height: 85px;
-    margin: 0;
-    transition: 0.5s;
+    justify-content: space-evenly;
+    /* background-color: aqua; */
+    background-color: rgba(0, 0, 0, 0);
     color: white;
+    transition: 0.2s;
+    top: 0;
+    border-top: 4px solid rgba(0, 0, 0, 0);
+    border-bottom: 0.5px solid gray;
+
+
+    
   }
 
-  .containerHover {
+  /* .fixedBox:hover {
+    background-color: white;
+    transition: 0.2s;
+    border-bottom: 0.5px solid gray;
+    border-top: 3px solid red;
+    color: black;
+  } */
+  .fixedBoxHover {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    z-index: 101;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: aqua;
+    /* background-color: rgba(0, 0, 0, 0); */
+    color: black;
+    transition: 0.2s;
+    top: 0;
+    border-top: 4px solid rgba(0, 0, 0, 0);;
+
+    background-color: white;
+    border-bottom: 0.5px solid gray;
+    border-top: 3px solid red;
+  }
+
+
+  .fixed {
     background-color: white;
     transition: 0.5s;
+    top: 0;
+    box-shadow: 1px -10px 8px 10px black;
+    border-top: 3px solid red;
     color: black;
-  }
-`;
 
-const TabMenu = styled.ul`
-  width: 1200px;
-  font-weight: bold;
-  display: flex;
-  flex-direction: row;
-  justify-items: center;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  }
+
+  .menu-tap {
+    display: flex;
+    width: 70%;
+    height: 100%;
+    justify-content: space-around;
+    /* color: white; */
+  }
+  @media (max-width: 800px) {
+    .menu-tap>li {
+      display: none;
+    }
+
+  }
+
 
   .submenu {
+    flex-flow: column;
     font-size: 20px;
     display: flex;
     justify-content: center;
-    flex-grow: 1;
-    padding-left: 20px;
     cursor: pointer;
     transition: 0.5s;
-    color: black;
+    /* color: black; */
+    border-bottom: 3px solid rgba(0, 0, 0, 0);
   }
   .submenuHover {
-    color: white;
-  }
+    /* color: white; */
+    border-bottom: 3px solid rgba(0, 0, 0, 0);
 
+  }
   .focused {
-    /* background-color: red; */
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
+    border-bottom: 3px solid red;
     transition: 0.5s;
   }
-`;
 
-const Side = styled.div`
-  width: 140px;
-  height: 74px;
-  list-style: none;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-around;
-  .sel_lang_wrap {
-    display: flex;
-    justify-content: space-around;
+  .logo {
+    width: 101px;
+    height: 43px;
+    transition: 0.2s;
+    background: url(//contents-image.twayair.com/homepage/images/common/top_logo.png) 0px 0px no-repeat;
   }
-  .util_menu {
-    display: flex;
-    justify-content: space-around;
-    color: white;
+  .logo-scroll {
+    width: 101px;
+    height: 43px;
+    transition: 0.2s;
+    background: url(//contents-image.twayair.com/homepage/images/main/top_logo.png) 0px 0px no-repeat;
   }
-  .set_util_menu {
-    display: flex;
-    justify-content: space-around;
-    color: black;
-  }
+`
 
-  .langBtn {
-    border: 0;
-    outline: 0;
-    background-color: rgba(0, 0, 0, 0);
-    cursor: pointer;
-    color: black;
-    transition: 0.5s;
-  }
-  .langBtnHover {
-    color: white;
-  }
-  .imgColor {
-    fill: rgb(42, 169, 224);
-  }
-  .imgColorHover {
-    fill: rgb(42, 169, 224);
-  }
-`;
+
 
 export function HeaderNav() {
-  const [currentTab, setCurrentTab] = useState(0);
+  //scroll color change
+  const [ScrollY, setScrollY] = useState(0); 
+  const [ScrollActive, setScrollActive] = useState(false); 
 
-  const selectMenuHandler = (index) => {
-    setCurrentTab(index);
-  };
+  function handleScroll() { 
+    if(ScrollY > 299) {
+        setScrollY(window.pageYOffset);
+        setScrollActive(true);
+    } else {
+        setScrollY(window.pageYOffset);
+        setScrollActive(false);
+    }
+}
 
-  const [isOn, setisOn] = useState(false);
-  const [isBtnOn, setisBtnOn] = useState(false);
+useEffect(() => {
+  function scrollListener() {  window.addEventListener("scroll", handleScroll); }
+  scrollListener(); 
+  return () => { window.removeEventListener("scroll", handleScroll); };
+});
 
-  const languageArr = [
-    {name: '한국', lang: '한국어'},
-    {name: 'Laos', lang: 'English'},
-    {name: '日本', lang: '日本語'},
-  ];
+//tap state
+const [currentTab, setCurrentTab] = useState(-1);
 
-  const [currentMenuList, setCurrentMenuList] = useState([]);
+const selectMenuHandler = (index) => {
+  setCurrentTab(index);
+};
+
+const [isOn, setisOn] = useState(false);
+const [isBtnOn, setisBtnOn] = useState(false);
+const [currentMenuList, setCurrentMenuList] = useState([]);
+
+// function handleMainTap() {
+//   if(true) {
+//     setisOn(true)
+//   } else {
+//     setisOn(false)
+//   }
+// }
+
+
+
 
   return (
-    <HeaderInner
-      onMouseEnter={() => setisOn(true)}
-      onMouseLeave={() => {
-        setCurrentMenuList([]);
-      }}
+    <>
+    <HeaderBox
+    // {`fixedBox ${isOn ? 'fixedBoxHover' : null}`}
+    onMouseLeave={() => {
+      setCurrentMenuList([]);
+    }}
     >
-      <div className={`container ${isOn ? 'containerHover' : null}`}>
-        <TabMenu>
-          <li>
-            <a href="/">
-              <img src="/logo/top_logo.png"></img>{' '}
-            </a>
-          </li>
-
+      <div className={`${ScrollActive ? "fixedBox fixed" : "fixedBox"}`}
+          onMouseEnter={() => setisOn(true)}
+          onMouseLeave={() => setisBtnOn(false)}
+          // onMouseLeave={() => {
+          //   setCurrentMenuList([]);
+          // }}
+          >
+        <a href='/'>
+          <div className={ScrollActive ? "logo " : "logo-scroll"}></div>
+        </a>
+        <div className='menu-tap'>
           {menuList.map((el, index) => {
             return (
-              <li
+              <li 
                 key={index}
                 className={`submenu ${isOn ? null : 'submenuHover'} ${
                   index === currentTab ? 'submenu focused' : 'submenu'
-                }`}
+                  }`}
                 onMouseOver={() => {
                   selectMenuHandler(index);
                   setCurrentMenuList(el.list1);
@@ -162,44 +204,23 @@ export function HeaderNav() {
                 onMouseOut={() => {
                   setCurrentTab(9);
                 }}
-              >
+                >
                 {el.tapName}
               </li>
-            );
+            )
           })}
-
-          <Side>
-            <div className="sel_lang_wrap">
-              {languageArr.map((el, index) => {
-                if (el.name === '한국') {
-                  return (
-                    <li key={index}>
-                      <button className={`langBtn ${isOn ? null : ' langBtnHover'}`}>
-                        {el.name} | {el.lang}
-                      </button>
-                    </li>
-                  );
-                }
-              })}
-            </div>
-            <div className="util_menu">
-              <a href="/" className="btn_login">
-                <img className={`imgColor ${isOn ? null : ' imgColorHover'}`} src="/icon/ico_top_login.png"></img>{' '}
-              </a>
-              <a href="/" className="btn_search">
-                <img className={`imgColor ${isOn ? null : ' imgColorHover'}`} src="/icon/ico_top_search.png"></img>{' '}
-              </a>
-              <a href="/" className="btn_allmenu">
-                <img className={`imgColor ${isOn ? null : ' imgColorHover'}`} src="/icon/ico_top_allmenu.png"></img>{' '}
-              </a>
-              {/* <a href='/' className='btn_search'><img src="/icon/ico_top_search.png"></img></a>  */}
-              {/* <a href='/' className='btn_allmenu'><TopLogin ></TopLogin></a> */}
-              {/* <a href='/' className='btn_allmenu'><img src={ico_top_login}/></a> */}
-            </div>
-          </Side>
-        </TabMenu>
+        <NavSide/>
+        </div>
       </div>
-      {isBtnOn ? (
+
+        <HeaderToggle
+          currentMenuList={currentMenuList}
+          isBtnOn={isBtnOn}
+          // setisBtnOn={setisBtnOn}
+          // setCurrentMenuList={setCurrentMenuList}
+          // setisOn={setisOn}
+        />
+    {/* {isBtnOn ? (
         <HeaderToggle
           currentMenuList={currentMenuList}
           isBtnOn={isBtnOn}
@@ -207,7 +228,9 @@ export function HeaderNav() {
           setCurrentMenuList={setCurrentMenuList}
           setisOn={setisOn}
         />
-      ) : null}
-    </HeaderInner>
-  );
+      ) : null} */}
+    </HeaderBox>
+    </>
+  )
 }
+
