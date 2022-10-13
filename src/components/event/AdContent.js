@@ -10,7 +10,6 @@ export const Content = styled.div`
   padding-right: 2.5px;
   /* border : 3px solid blue; */
 
-  /* background-color : red; */
 
   > img {
     height: 300px;
