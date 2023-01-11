@@ -7,6 +7,7 @@ import Button from './Button';
 import AfflImage from './AfflImage';
 import Carousel from './Carousel';
 import theme from 'data/theme';
+import data from 'data/afl_list.json';
 
 const AlianceTitle = styled.h1`
   text-align: center;
@@ -44,7 +45,9 @@ export default function AfflIcon() {
       <ThemeProvider theme={theme}>
         <AlianceTitle>제휴서비스</AlianceTitle>
         <TopWrapper>
-          <Button />
+        {data.afl.map((item) => (
+          <Button key={item.name} content={item.content} name={item.name} />
+        ))}
         </TopWrapper>
 
         <BottomWrapper>

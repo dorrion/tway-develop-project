@@ -49,17 +49,16 @@ const Icon = styled.img`
 
 `;
 
-function Button() {
+function Button({content, name}) {
   return (
     <>
-      {data.afl.map((item) => (
         <IconWrapper>
           <StyledCircle>
-            <Icon src={item.content} />
+            <Icon src={content} />
           </StyledCircle>
-          <p>{item.name}</p>
+          <p>{name}</p>
         </IconWrapper>
-      ))}
+    
     </>
   );
 }

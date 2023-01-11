@@ -1,5 +1,6 @@
 /* eslint-disable */
 //브랜치생성
+
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
@@ -7,6 +8,11 @@ import {Link} from 'react-router-dom';
 import HeaderToggle from './HeaderToggle';
 import menuList from '../../../data/menuList.json';
 import {NavSide} from './NavSide'
+import useHover from './useHover'
+
+export default {
+  title: "Hook/useHover",
+};
 // import MenuModal from './MenuModal'
 
 // import {ReactComponent as TopLogin} from '../../../data/ico_top_login.svg'
@@ -32,9 +38,6 @@ const HeaderBox = styled.div`
     top: 0;
     border-top: 4px solid rgba(0, 0, 0, 0);
     border-bottom: 0.5px solid gray;
-
-
-    
   }
 
   /* .fixedBox:hover {
@@ -53,7 +56,7 @@ const HeaderBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    background-color: aqua;
+    /* background-color: aqua; */
     /* background-color: rgba(0, 0, 0, 0); */
     color: black;
     transition: 0.2s;
@@ -98,11 +101,17 @@ const HeaderBox = styled.div`
     justify-content: center;
     cursor: pointer;
     transition: 0.5s;
-    /* color: black; */
+    color: white;
     border-bottom: 3px solid rgba(0, 0, 0, 0);
   }
   .submenuHover {
-    /* color: white; */
+    flex-flow: column;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.5s;
+    color: white;
     border-bottom: 3px solid rgba(0, 0, 0, 0);
 
   }
@@ -125,9 +134,16 @@ const HeaderBox = styled.div`
   }
 `
 
-
+// const Box = styled.div`
+//   width: 100px;
+//   height: 100px;
+//   background-color: red;
+// `;
 
 export function HeaderNav() {
+  const [ref, hover] = useHover();
+
+
   //scroll color change
   const [ScrollY, setScrollY] = useState(0); 
   const [ScrollActive, setScrollActive] = useState(false); 
@@ -172,23 +188,34 @@ const [currentMenuList, setCurrentMenuList] = useState([]);
 
   return (
     <>
-    <HeaderBox
-    // {`fixedBox ${isOn ? 'fixedBoxHover' : null}`}
+    <HeaderBox 
+    ref={ref}
     onMouseLeave={() => {
       setCurrentMenuList([]);
     }}
     >
+      {hover ? <div className="fixedBox fixed"></div> : null}
+     {/* <Box ref={ref} />
+      {hover ? <div>ToolTip!</div> : null} */}
       <div className={`${ScrollActive ? "fixedBox fixed" : "fixedBox"}`}
-          onMouseEnter={() => setisOn(true)}
-          onMouseLeave={() => setisBtnOn(false)}
+            
+          // onMouseLeave={() => setisBtnOn(false)}
           // onMouseLeave={() => {
           //   setCurrentMenuList([]);
           // }}
           >
+            
         <a href='/'>
-          <div className={ScrollActive ? "logo " : "logo-scroll"}></div>
+          <div 
+          // className={ScrollActive ? "logo " : "logo-scroll"}
+          >
+            {hover  ? <div className="logo "></div> : <div className={ScrollActive ? "logo " : "logo-scroll"}></div>} 
+            {/* {hover  ? <div className="submenu"></div> : <div className="submenuHover"></div>}  */}
+          </div>
         </a>
+        
         <div className='menu-tap'>
+        {/* {hover  ? <div className="submenu"></div> : <div className="submenuHover"></div>}  */}
           {menuList.map((el, index) => {
             return (
               <li 
@@ -206,12 +233,19 @@ const [currentMenuList, setCurrentMenuList] = useState([]);
                 }}
                 >
                 {el.tapName}
+                
               </li>
+              
             )
+            
           })}
+          
         <NavSide/>
+        
         </div>
+        
       </div>
+      
 
         <HeaderToggle
           currentMenuList={currentMenuList}
@@ -220,6 +254,7 @@ const [currentMenuList, setCurrentMenuList] = useState([]);
           // setCurrentMenuList={setCurrentMenuList}
           // setisOn={setisOn}
         />
+        
     {/* {isBtnOn ? (
         <HeaderToggle
           currentMenuList={currentMenuList}

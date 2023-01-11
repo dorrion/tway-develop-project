@@ -25,7 +25,7 @@ export const Modal = styled.div`
   /* opacity : ${(props) => props.props === true ? 100 : 0}; */
   position : absolute;
   width : 80%;
-  height : 600px;
+  height : 800px;
   overflow : auto;
 
   transition : .5s ease;

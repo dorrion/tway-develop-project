@@ -1,12 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
-import { ReactComponent as NavUser } from '../../../assets/icon/NavUser.svg'
-import { ReactComponent as Hamburger } from '../../../assets/icon/Hamburger.svg'
-import { ReactComponent as NavMagnifier } from '../../../assets/icon/NavMagnifier.svg'
+import {ReactComponent as NavUser} from '../../../assets/icon/NavUser.svg';
+import {ReactComponent as Hamburger} from '../../../assets/icon/Hamburger.svg';
+import {ReactComponent as NavMagnifier} from '../../../assets/icon/NavMagnifier.svg';
+// import useHover from './useHover'
 
-import MenuModal from './MenuModal'
+export default {
+  title: 'Hook/useHover',
+};
 
+// import MenuModal from './MenuModal'
 
 const Side = styled.div`
   width: 140px;
@@ -55,32 +59,33 @@ const Side = styled.div`
 
   @media (max-width: 800px) {
     width: 80%;
-
   }
-`
+`;
 
-export function NavSide () {
+export function NavSide() {
   //scroll color change
-  const [ScrollY, setScrollY] = useState(0); 
-  const [ScrollActive, setScrollActive] = useState(false); 
+  const [ScrollY, setScrollY] = useState(0);
+  const [ScrollActive, setScrollActive] = useState(false);
 
-  function handleScroll() { 
-    if(ScrollY > 299) {
-        setScrollY(window.pageYOffset);
-        setScrollActive(true);
+  function handleScroll() {
+    if (ScrollY > 299) {
+      setScrollY(window.pageYOffset);
+      setScrollActive(true);
     } else {
-        setScrollY(window.pageYOffset);
-        setScrollActive(false);
+      setScrollY(window.pageYOffset);
+      setScrollActive(false);
     }
-}
+  }
 
-useEffect(() => {
-  function scrollListener() {  window.addEventListener("scroll", handleScroll); }
-  scrollListener(); 
-  return () => { window.removeEventListener("scroll", handleScroll); };
-});
-
-
+  useEffect(() => {
+    function scrollListener() {
+      window.addEventListener('scroll', handleScroll);
+    }
+    scrollListener();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  });
 
   // const languageArr = [
   //   {name: '한국', lang: '한국어'},
@@ -88,22 +93,25 @@ useEffect(() => {
   //   {name: '日本', lang: '日本語'},
   // ];
 
-    // 모달창 노출 여부 state
-    const [modalOpen, setModalOpen] = useState(false);
+  // 모달창 노출 여부 state
+  // const [modalOpen, setModalOpen] = useState(false);
 
-    // 모달창 노출
-    const showModal = () => {
-        setModalOpen(true);
-    };
+  // // 모달창 노출
+  // const showModal = () => {
+  //     setModalOpen(true);
+  // };
 
+  // const [ref, hover] = useHover();
 
   return (
-
-    <Side>
-        <div>
-            <button onClick={showModal}>모달 띄우기</button>
-            {modalOpen && <MenuModal setModalOpen={setModalOpen} />}
-        </div>
+    <Side
+    // ref={ref}
+    >
+      <div className="sel_lang_wrap">
+        {/* <div onClick={showModal}>모달 띄우기</div>
+            {modalOpen && <MenuModal setModalOpen={setModalOpen} />} */}
+        {/* {hover  ? <div className="langBtn "></div> : <div className="langBtnHover"></div>} */}
+      </div>
 
       {/* <div 
       className="sel_lang_wrap"
@@ -123,17 +131,15 @@ useEffect(() => {
       </div> */}
       <div className="util_menu">
         <a href="/" className="btn_login">
-          {/* <img className={`imgColor ${isOn ? null : ' imgColorHover'}`} src="/icon/ico_top_login.png"></img>{' '} */}
-          <NavUser fill={ScrollActive ? "black" : "white"}/>
+          <NavUser fill={ScrollActive ? 'black' : 'white'} />
         </a>
         <a href="/" className="btn_search">
-          <NavMagnifier fill={ScrollActive ? "black" : "white"}/>
+          <NavMagnifier fill={ScrollActive ? 'black' : 'white'} />
         </a>
         <a href="/" className="btn_allmenu">
-          <Hamburger fill={ScrollActive ? "black" : "white"}/>
+          <Hamburger fill={ScrollActive ? 'black' : 'white'} />
         </a>
       </div>
-  </Side>
-  )
-
+    </Side>
+  );
 }
